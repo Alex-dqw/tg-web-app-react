@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css';
@@ -16,13 +16,13 @@ const products = [
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
-        return acc += item.price;
+        return acc += item.price
     }, 0)
 }
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
-    const {tg} = useTelegram();
+    const {tg, queryId} = useTelegram();
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
