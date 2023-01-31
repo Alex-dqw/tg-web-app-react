@@ -6,6 +6,7 @@ const Form = () => {
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [subject, setSubject] = useState('');
+    const {tg} = useTelegram();
 
     useEffect(() => {
         tg.MainButton.setParams({
